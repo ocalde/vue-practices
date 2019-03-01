@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>VueJS practices</title>
+        <script type="text/javascript" src="js/vue.js"></script>
+        
+    </head>
+    <body>
+        <div id="raiz">
+            {{ greetingMessage }}
+            <a v-bind:href="linkcito" target="_blank">My Link</a>
+            <input type="text" id="nuevolink" v-on:input="changeLink" />
+        </div>
+        <script>
+                    new Vue({
+                        el: "#raiz",
+                        data: {
+                            greetingMessage: "Hello world",
+                            linkcito: ""
+                        },
+                        methods: {
+                            changeLink: function(evt) {
+                                this.linkcito = "https://" + evt.target.value
+                            }
+                        }
+                    });
+            </script>
+    </body>
+</html>
