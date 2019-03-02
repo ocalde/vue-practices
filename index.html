@@ -2,27 +2,41 @@
     <head>
         <title>VueJS practices</title>
         <script type="text/javascript" src="js/vue.js"></script>
+		<link rel="stylesheet" href="css/bootstrap.min.css" />
         
     </head>
     <body>
-        <div id="raiz">
+        <div id="raiz" v-on:mousemove="getCoordinates">
             {{ greetingMessage }}
             <a v-bind:href="linkcito" target="_blank">My Link</a>
             <input type="text" id="nuevolink" v-on:input="changeLink" />
+            <button type="button" v-on:mouseover="increase">Counter increase</button>
+            <span>{{count}}</span>
+            <span>{{x + ' ' + y}}</span>
         </div>
         <script>
-                    new Vue({
-                        el: "#raiz",
-                        data: {
-                            greetingMessage: "Hello world",
-                            linkcito: ""
-                        },
-                        methods: {
-                            changeLink: function(evt) {
-                                this.linkcito = "https://" + evt.target.value
-                            }
-                        }
-                    });
-            </script>
+            new Vue({
+                el: "#raiz",
+                data: {
+                    greetingMessage: "Hello world",
+                    linkcito: "",
+                    count: 0,
+                    x: 0,
+                    y: 0
+                },
+                methods: {
+                    changeLink: function(evt) {
+                        this.linkcito = "https://" + evt.target.value
+                    },
+                    increase: function() {
+                        this.count = this.count + 1;
+                    },
+                    getCoordinates: function(evt) {
+                        this.x = evt.clientX;
+                        this.y = evt.clientY;
+                    }
+                }
+            });
+        </script>
     </body>
 </html>

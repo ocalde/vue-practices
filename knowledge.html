@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>VueJS practices</title>
+        <script type="text/javascript" src="js/vue.js"></script>
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+    </head>
+    <body>
+        <div id="raiz" class="container-fluid">
+            <div class="row">
+                <div id="directives-list" class="col-xs-12 col-xl-6">
+                    <h1>VueJS <span class="badge badge-secondary">Directives</span></h1>
+                    <ul class="list-group">
+                        <li class="list-group-item" v-for="directive in directives">
+                            <h3>{{directive.name}} </h3>
+                            <p>{{directive.description}}</p>
+                        </li>
+                    </ul>
+                </div>    
+                <div id="reservedWords-list" class="col-xs-12 col-xl-6">
+                    <h1>VueJS <span class="badge badge-secondary">Reserved words</span></h1>
+                    <ul class="list-group">
+                        <li class="list-group-item" v-for="resword in reservedWords">
+                            <h3>{{resword.name}} </h3>
+                            <p>{{resword.description}}</p>
+                        </li>
+                    </ul>
+                </div>    
+            </div>
+        </div>
+        <script>
+                    new Vue({
+                        el: "#raiz",
+                        data: {
+                            directives: [
+                                {name: "v-for", description: "Iterates over a list. It has the format (iterator_variable in list)"},
+                                {name: "v-once", description: "Value renders only once. If there are further changes, value is not updated for this element"},
+                                {name: "v-on", description: "For binding a function to an event, like click or input"},
+                                {name: "v-html", description: "Prints value of property without escaping it, for printing HTML directly in webpage. Use it at own discretion"},
+                                {name: "v-bind", description: "Binds an html tag attribute value with a value in one of the elements of data object. If value changes, it is refreshed"},
+                                {name: "v-model", description: "Enables 2 way data binding between input elements and Vue data element. It is the same as using v-bind and v-on:input"},
+                            ],
+                            reservedWords: [
+                                {name: "$event", description: "Allows you to access event object in case you want to call a function with extra parameters in v-on"},
+                                {name: ".stop", description: "Used as a modifier for events, like mousemove.stop, to stop the propagation of event"},
+                                {name: ".prevent", description: "Used as a modifier for events, like mousemove.prevent, to prevent the execution of event"},
+                                {name: ".enter", description: "Used with a key event, like keypress.enter, to trigger action only when Enter key is pressed. Others can be found in https://vuejs.org/v2/guide/events.html#Key-Modifiers"},
+                            ],
+                        },
+                        
+                    });
+            </script>
+    </body>
+</html>
