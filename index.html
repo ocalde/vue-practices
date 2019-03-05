@@ -8,10 +8,11 @@
     <body>
         <div id="raiz" v-on:mousemove="getCoordinates">
             {{ greetingMessage }}
-            <a v-bind:href="linkcito" target="_blank">My Link</a>
+            <a :href="linkcito" target="_blank">My Link</a>
             <input type="text" id="nuevolink" v-on:input="changeLink" />
-            <button type="button" v-on:mouseover="increase">Counter increase</button>
-            <span>{{count}}</span>
+            <button type="button" @click="increase">Counter increase</button>
+            <h3>Normal counter {{getCounter()}}</h3>
+            <h3>Enhanced counter {{getComputedCounter}}</h3>
             <span>{{x + ' ' + y}}</span>
         </div>
         <script>
@@ -24,12 +25,30 @@
                     x: 0,
                     y: 0
                 },
+                watch: {
+                    count: function() {
+                        let vm = this;
+                        setTimeout(function() {
+                            vm.count = 0;
+                        }, 3000);
+                    }
+                },
+                computed: {
+                    getComputedCounter() {
+                        console.log("getComputedCounter executed");
+                        return this.count;
+                    }
+                },
                 methods: {
                     changeLink: function(evt) {
                         this.linkcito = "https://" + evt.target.value
                     },
                     increase: function() {
                         this.count = this.count + 1;
+                    },
+                    getCounter() {
+                        console.log("getCounter executed");
+                        return this.count;
                     },
                     getCoordinates: function(evt) {
                         this.x = evt.clientX;
