@@ -24,6 +24,15 @@
                             <p>{{resword.description}}</p>
                         </li>
                     </ul>
+                </div>
+                <div id="vuecompparts-list" class="col-xs-12 col-xl-6">
+                    <h1>VueJS <span class="badge badge-secondary">Vue Object parts</span></h1>
+                    <ul class="list-group">
+                        <li class="list-group-item" v-for="part in vueComponentParts">
+                            <h3>{{part.name}} </h3>
+                            <p>{{part.description}}</p>
+                        </li>
+                    </ul>
                 </div>    
             </div>
         </div>
@@ -44,6 +53,14 @@
                                 {name: ".stop", description: "Used as a modifier for events, like mousemove.stop, to stop the propagation of event"},
                                 {name: ".prevent", description: "Used as a modifier for events, like mousemove.prevent, to prevent the execution of event"},
                                 {name: ".enter", description: "Used with a key event, like keypress.enter, to trigger action only when Enter key is pressed. Others can be found in https://vuejs.org/v2/guide/events.html#Key-Modifiers"},
+                            ],
+                            vueComponentParts: [
+                                {name: "el", description: "References the HTML element that will be managed by VueJS. For example, #idofelement"},
+                                {name: "data", description: "Used to store all the data for the VueJS component, this data can change"},
+                                {name: "methods", description: "Can contain methods that alter data for VueJS component, but can perform other actions. " +
+                                                                " If these are used for displaying data, they are executed regardless data has changed."},
+                                {name: "computed", description: "These are triggered when the pieces of data inside of it change, that way it is not executed on each render"},
+                                {name: "watch", description: "The key is an specific tag for a property of data, and it watches that property, so if it changes, method is executed"}
                             ],
                         },
                         
